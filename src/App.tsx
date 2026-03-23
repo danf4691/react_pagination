@@ -36,8 +36,6 @@ export const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const x = Math.ceil(total / perPage);
-  const pages = Array.from({ length: x }, (_, i) => i + 1);
   const visibleItems = items.slice(
     (currentPage - 1) * perPage,
     currentPage * perPage,
@@ -85,7 +83,8 @@ export const App: React.FC = () => {
       </div>
 
       <Pagination
-        pages={pages}
+        total={total}
+        perPage={perPage}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
